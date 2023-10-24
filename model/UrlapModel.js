@@ -1,4 +1,4 @@
-import { adat, adatLeiras } from "./adatok.js";
+import { adat, adatLeiras } from "./adatokLeiro.js";
 
 class UrlapModel {
     #adat = [];
