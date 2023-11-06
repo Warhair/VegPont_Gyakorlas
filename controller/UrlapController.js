@@ -1,30 +1,35 @@
-import UrlapModel from "../model/UrlapModel.js";
-import UrlapView from "../view/urlap/UrlapView.js";
-import DataService from "../model/DataService.js";
+import AdatModel from "../Model/AdatModel.js";
+import DataService from "../Model/DataService.js";
+import TablaView from "../View/TablaView.js";
+import HibaView from "../View/HibaView.js";
+import UrlapView from "../View/UrlapView.js";
+import urlapLeiro from "../Model/urlapLeiro.js";
 
-class UrlapController {
-    #dataService;
-   
+class AdatController {
     constructor() {
-       
-        this.urlap()
-        /* this.#dataService = new DataService();
-        this.#dataService.getData(adatVegpont, feldolgoz); */
-        this.asszinkronAdatok();
+        const ADAT_MODEL = new AdatModel();
+        const DATA_SERVICE = new DataService();
+        const URLAP_VIEW = new UrlapView($("#urlap"), urlapLeiro);
+        DATA_SERVICE.getData("../../adat.json", this.adatokMegjelenit, this.hibaMegjelenit);
+        $(window).on("validFormSubmitEvent", event => {
+            console.log(event.detail);
+        });
     }
-    asszinkronAdatok() {
-        let adatVegpont = "adatok.json";
-        this.#dataService = new DataService();
-        //this.#asszinkron.getData(adatVegpont, this.feldolgoz);
-        this.#dataService.getAxiosData(adatVegpont, this.feldolgoz);
+
+
+
+
+    adatokMegjelenit(adatLista) {
+        const ADAT_VIEW = new TablaView($("#lista"), adatLista, [urlapLeiro.nev.megj, urlapLeiro.szul.megj]);
     }
-    urlap() {
-        const urlapModel = new UrlapModel();
-        const urlapView = new UrlapView(urlapModel.adatLeiras, $(".urlap"));
+
+
+
+
+    hibaMegjelenit(error) {
+        const HIBA_VIEW = new HibaView($("#lista"), error);
     }
-    feldolgoz(data) {
-        console.log(data);
-       
-    }
+
+
 }
 export default UrlapController;

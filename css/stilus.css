@@ -1,15 +1,31 @@
 main {
     width: 50%;
 }
+
 .valid-visible {
     display: none;
 }
+
 .invalid-visible {
     display: none;
 }
+
 .valid {
     color: green;
 }
+
 .invalid {
     color: red;
+}
+
+table {
+    display: table;
+}
+
+table tr {
+    display: table-cell;
+}
+
+table tr td {
+    display: block;
 }
