@@ -1,5 +1,5 @@
-import UrlapController from "./controller/UrlapController.js";
-$(function () {
-   
-     new UrlapController();
+import AdatController from "./MVC/Controller/AdatController.js";
+
+$(() => {
+    new AdatController();
 });
